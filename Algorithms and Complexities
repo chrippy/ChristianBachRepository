@@ -1,0 +1,128 @@
+class Algorithm
+{
+
+    // Sorting Algorithms
+    public static void Quick_Sort(double[] data, int left, int right)
+    {
+        double temp;
+        int i, j;
+        double pivot;
+        i = left;
+        j = right;
+        pivot = data[(left + right) / 2];
+        do
+        {
+            while ((data[i] < pivot) && (i < right)) i++;
+            while ((pivot < data[j]) && (j > left)) j--;
+            if (i <= j)
+            {
+                temp = data[i];
+                data[i] = data[j];
+                data[j] = temp;
+                i++;
+                j--;
+            }
+        } while (i <= j);
+
+        if (left < j) Quick_Sort(data, left, j);
+        if (i < right) Quick_Sort(data, i, right);
+    }
+
+
+    static void Main()
+    {
+
+        //Read text files 
+
+        string[] Net_1_256 = System.IO.File.ReadAllLines("Net_1_256.txt");
+        string[] Net_1_2048 = System.IO.File.ReadAllLines("Net_1_2048.txt");
+        string[] Net_2_256 = System.IO.File.ReadAllLines("Net_2_256");
+        string[] Net_2_2048 = System.IO.File.ReadAllLines("Net_2_2048.txt");
+        string[] Net_3_256 = System.IO.File.ReadAllLines("Net_3_256.txt");
+        string[] Net_3_2048 = System.IO.File.ReadAllLines("Net_3_2048.txt");
+
+        //Convert to double Array
+
+        //double[] Dates = Array.ConvertAll(Date, s => double.Parse(s));
+        double[] Net_1_256 = System.Array.ConvertAll(Net_1_256, s => double.Parse(s));
+        double[] Net_1_2048 = System.Array.ConvertAll(Net_1_2048, s => double.Parse(s));
+        double[] Net_2_256 = System.Array.ConvertAll(Net_2_256, s => double.Parse(s));
+        double[] Net_2_2048 = System.Array.ConvertAll(Net_2_2048, s => double.Parse(s));
+        double[] Net_3_256 = System.Array.ConvertAll(Net_3_256, s => double.Parse(s));
+        double[] Net_3_2048 = System.Array.ConvertAll(Net_3_2048, s => double.Parse(s));
+
+
+        System.Console.WriteLine("\nWelcome to Shane Porter's Algorithms and Complexity Assingment!\n\nWhat would you like to do?");
+        System.Console.WriteLine("\n1. Select an individual array to analyse\n\n2. View all of the files in decending order by Date\n\n3. Search for a Date\n\n4. Search for a Day\n        \n5. Sort an Array");
+
+        int Choice = System.Convert.ToInt32(System.Console.ReadLine());
+
+
+
+        //Option 1. Individual Array
+        if (Choice == 1)
+
+            System.Console.WriteLine("\nYou have chosen to select an individual array to analyse");
+        System.Console.WriteLine("\nPlease select the array that you wish to analyse");
+        System.Console.WriteLine("\n1. Day\n2. Date\n3. SH1_Open\n4. SH1_Close\n5. SH1_Diff\n6. SH1_Volume ");
+
+        int ArrayChoice = System.Convert.ToInt32(System.Console.ReadLine());
+
+        //Day
+        if (ArrayChoice == 1)
+
+
+            //Date
+            if (ArrayChoice == 2)
+            {
+
+                System.DateTime[] dates = new System.DateTime[143];
+                dates[0] = System.Convert.ToDateTime("12/01/2009");
+                dates[1] = System.DateTime.Now;
+
+                System.Console.WriteLine(Date);
+
+
+            }
+
+        //SH1_Open
+        if (ArrayChoice == 3)
+        {
+            Quick_Sort(Net_2_256, 0, 143);
+            for (int i = 0; i < Net_2_256.Length; i++)
+            {
+                System.Console.WriteLine(Net_2_256[i]);
+            }
+
+        }
+        //SH1_Close
+        if (ArrayChoice == 4)
+        {
+            Quick_Sort(SH1_Close, 0, 143);
+            for (int i = 0; i < SH1_Close.Length; i++)
+            {
+                System.Console.WriteLine(SH1_Close[i]);
+            }
+
+            //SH1_Diff
+            if (ArrayChoice == 5)
+            {
+                Quick_Sort(SH1_Diff, 0, 143);
+                for (int i = 0; i < SH1_Diff.Length; i++)
+                {
+                    System.Console.WriteLine(SH1_Diff[i]);
+                }
+            }
+        }
+
+        //SH1_Volume
+        if (ArrayChoice == 6)
+        {
+            Quick_Sort(SH1_Volume, 0, 143);
+            for (int i = 0; i < SH1_Volume.Length; i++)
+            {
+                System.Console.WriteLine(SH1_Volume[i]);
+            }
+        }
+    }
+}
